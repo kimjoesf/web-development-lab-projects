@@ -1,0 +1,253 @@
+<!doctype html> 
+<html lang="en"> 
+<head> 
+  <meta charset="utf-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+  <title>My Portfolio</title> 
+  <style> 
+    :root { 
+      --bg: #0d1117; 
+      --card: #161b22; 
+      --text: #e6edf3; 
+      --muted: #8b949e; 
+      --accent: #58a6ff; 
+      --radius: 12px; 
+    } 
+ 
+    * { box-sizing: border-box; margin: 0; padding: 0; } 
+    body { 
+      background: var(--bg); 
+      color: var(--text); 
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+      display: flex; 
+      flex-direction: column; 
+      align-items: center; 
+      padding: 40px 20px; 
+      line-height: 1.6; 
+    } 
+ 
+    header { 
+      text-align: center; 
+      margin-bottom: 50px; 
+    } 
+ 
+    header h1 { 
+      font-size: 2rem; 
+      margin-bottom: 8px; 
+      color: var(--accent); 
+    } 
+ 
+    header p { 
+      color: var(--muted); 
+      font-size: 1rem; 
+    } 
+ 
+    .avatar { 
+      width: 100px; 
+      height: 100px; 
+      border-radius: 50%; 
+      background: linear-gradient(135deg, var(--accent), #3d63ff); 
+      margin: 0 auto 20px auto; 
+      display: flex; 
+      align-items: center; 
+      justify-content: center; 
+      color: var(--bg); 
+      font-weight: 700; 
+      font-size: 32px; 
+    } 
+ 
+    section { 
+      width: 100%; 
+      max-width: 900px; 
+      margin-bottom: 50px; 
+    } 
+ 
+    section h2 { 
+      font-size: 1.4rem; 
+      margin-bottom: 16px; 
+      color: var(--accent); 
+      border-bottom: 1px solid rgba(255,255,255,0.1); 
+      padding-bottom: 6px; 
+    } 
+ 
+    .about { 
+      text-align: center; 
+      color: var(--muted); 
+      max-width: 600px; 
+      margin: 0 auto; 
+      font-size: 1rem; 
+    } 
+ 
+    .skills { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 12px; 
+    } 
+ 
+    .skill { 
+      background: var(--card); 
+      border-radius: var(--radius); 
+      padding: 10px 16px; 
+      font-size: 0.95rem; 
+      color: var(--text); 
+      border: 1px solid rgba(255,255,255,0.05); 
+      transition: background-color 0.2s ease; 
+    } 
+ 
+    .skill:hover { 
+      background: #1c222a; 
+    } 
+ 
+    .projects { 
+      display: grid; 
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+      gap: 20px; 
+    } 
+ 
+    .card { 
+      display: flex; 
+      flex-direction: column; 
+      background: var(--card); 
+      border-radius: var(--radius); 
+      padding: 20px; 
+      transition: transform 0.2s ease, background-color 0.2s ease; 
+      border: 1px solid rgba(255,255,255,0.05); 
+    } 
+ 
+    .card:hover { 
+      transform: translateY(-4px); 
+      background: #1c222a; 
+    } 
+ 
+    .card h3 { 
+      margin-bottom: 10px; 
+      color: var(--text); 
+    } 
+ 
+    .card p { 
+      color: var(--muted); 
+      font-size: 0.95rem; 
+      margin-bottom: 10px; 
+    } 
+ 
+    .tags { 
+      display: flex; 
+      flex-wrap: wrap; 
+      gap: 6px; 
+      margin-top: auto; 
+    } 
+ 
+    .tag { 
+      background: rgba(255,255,255,0.05); 
+      border-radius: 6px; 
+      padding: 4px 8px; 
+      font-size: 0.8rem; 
+      color: var(--muted); 
+      margin-top: auto; 
+    } 
+ 
+    footer { 
+      margin-top: 40px; 
+      text-align: center; 
+      color: var(--muted); 
+      font-size: 0.9rem; 
+    } 
+ 
+  a{ 
+    color: var(--accent); 
+    font-weight: bold; 
+    text-decoration: none; 
+  }   
+ 
+  </style> 
+</head> 
+<body> 
+  <header> 
+    <div class="avatar">YG</div> 
+    <h1>Yousef Gamie</h1> 
+    <p>• Web Developer •</p> 
+  </header> 
+ 
+  <section id="about"> 
+    <h2>About Me</h2> 
+    <p class="about">I’m a front-end developer dedicated to building responsive, 
+accessible, and visually engaging web interfaces. I focus on writing clean, 
+efficient code and creating seamless user experiences through thoughtful design 
+and attention to detail.</p> 
+  </section> 
+ 
+  <section id="skills"> 
+    <h2>Skills</h2> 
+    <div class="skills"> 
+      <div class="skill">HTML</div> 
+      <div class="skill">CSS</div> 
+      <div class="skill">javascript</div> 
+      <div class="skill">UX/UI Design </div> 
+      <div class="skill">Chakra ui</div> 
+      <div class="skill">React Js</div> 
+      <div class="skill">Next Js</div> 
+      <div class="skill">Python</div> 
+      <div class="skill">Java</div> 
+      <div class="skill">C / C++</div> 
+      <div class="skill">OOP</div> 
+      <div class="skill">Cloud computing</div> 
+      <div class="skill">Version Control </div> 
+      <div class="skill">Bosch</div> 
+    </div> 
+  </section> 
+ 
+  <section id="projects"> 
+    <h2>Projects</h2> 
+    <div class="projects"> 
+      <div class="card"> 
+        <h3>Instagram clone</h3> 
+        <p>Instagram clone built with React and Vite. Uses Hot Module Replacement 
+(HMR) for fast development and ESLint for clean, maintainable code. 
+         <a href="https://github.com/kimjoesf/instagram-clone.git">Link</a>   
+        </p> 
+        <div class="tags"> 
+          <span class="tag">Chakra ui</span> 
+          <span class="tag">React Js</span> 
+          <span class="tag">Vite</span> 
+        </div> 
+      </div> 
+ 
+      <div class="card"> 
+        <h3>Social media platform</h3> 
+        <p>a social media platform allows the users to signup or log in if they 
+have an account,  
+          the app allows the users to follow friends, publish posts, comment on 
+published posts  
+          ,and react on the posts and posts comments. The app allow the user to 
+modify his profile by changing user name or password. 
+          <a href="https://github.com/kimjoesf/Media_platform.git">Link</a> 
+        </p> 
+        <div class="tags"> 
+          <span class="tag">OOP</span> 
+          <span class="tag">Java</span> 
+          <span class="tag">Swing</span> 
+        </div> 
+      </div> 
+ 
+      <div class="card"> 
+        <h3>Logic Circuit solver</h3> 
+        <p>A C++ program designed to evaluate and solve complex digital logic 
+circuits based on a user-defined string representation.  
+          This project implements the core logic gate operations (AND, OR, NOT, 
+NAND, NOR, XOR) to process circuit inputs and generate a final high (1) or low 
+(0) output. 
+          <a href="https://github.com/code50/143870670.git">Link</a> 
+        </p> 
+        <div class="tags"> 
+          <span class="tag">C++</span> 
+        </div> 
+      </div> 
+    </div> 
+  </section> 
+ 
+  <footer> 
+    © 2025 Yousef Gamie. All Rights Reserved 
+  </footer> 
+</body> 
+</html>
