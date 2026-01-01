@@ -1,0 +1,141 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+enum CommunityType {
+  public
+  restricted
+  private
+}
+
+enum VoteType {
+  upvote
+  downvote
+}
+
+
+model User {
+  id         String   @id // Clerk userId
+  username   String   @unique
+  email      String   @unique
+  imageUrl   String?
+  isReported Boolean  @default(false)
+  joinedAt   DateTime @default(now())
+
+  posts      Post[]
+  comments   Comment[]
+  votes      Vote[]
+  communitiesModerated Community[] @relation("Moderator")
+  joinedCommunities CommunityMember[]
+}
+
+
+model Community {
+  id          String        @id @default(uuid())
+  name        String        @unique
+  description String?
+  imageUrl    String?
+  bannerUrl   String?
+  about       String?
+  isMature    Boolean       @default(false)
+  type        CommunityType @default(public)
+  createdAt   DateTime      @default(now())
+
+  moderatorId String
+  moderator   User          @relation("Moderator", fields: [moderatorId], references: [id])
+
+  posts       Post[]
+  members CommunityMember[]
+}
+
+
+model Post {
+  id           String     @id @default(uuid())
+  title        String
+  originalTitle String?
+  body         String?
+  isReported   Boolean    @default(false)
+  isDeleted    Boolean    @default(false)
+  publishedAt  DateTime   @default(now())
+  summary   String?
+
+  authorId     String
+  author       User       @relation(fields: [authorId], references: [id])
+
+  communityId  String?
+  community    Community? @relation(fields: [communityId], references: [id])
+
+  mediaURLs    String[]   @default([])
+  mediaTypes   String[]   @default([])
+    
+  comments     Comment[]
+  votes        Vote[]
+}
+
+
+
+model Comment {
+  id              String    @id @default(uuid())
+  content         String
+  imageUrl        String?
+  isReported      Boolean   @default(false)
+  createdAt       DateTime  @default(now())
+
+  authorId        String
+  author          User      @relation(fields: [authorId], references: [id])
+
+  postId          String
+  post            Post      @relation(fields: [postId], references: [id])
+
+  parentCommentId String?
+  parentComment   Comment?  @relation("CommentReplies", fields: [parentCommentId], references: [id])
+  replies         Comment[] @relation("CommentReplies")
+
+  votes           Vote[]
+}
+
+
+model Vote {
+  id        String   @id @default(uuid())
+  voteType VoteType
+  createdAt DateTime @default(now())
+
+  userId    String
+  user      User     @relation(fields: [userId], references: [id])
+
+  postId    String?
+  post      Post?    @relation(fields: [postId], references: [id])
+
+  commentId String?
+  comment   Comment? @relation(fields: [commentId], references: [id])
+
+  @@unique([userId, postId])
+  @@unique([userId, commentId])
+}
+
+
+model CommunityMember {
+  id          String   @id @default(uuid())
+  joinedAt    DateTime @default(now())
+
+  userId      String
+  user        User     @relation(fields: [userId], references: [id])
+
+  communityId String
+  community   Community @relation(fields: [communityId], references: [id])
+
+  @@unique([userId, communityId])
+}
